@@ -1,0 +1,149 @@
+:root {
+  --bg: #f4f5f7;
+  --card: #ffffff;
+  --border: #e2e5ea;
+  --text: #1c2330;
+  --muted: #6b7280;
+  --primary: #4f46e5;
+  --primary-dark: #4338ca;
+  --danger: #dc2626;
+  --success-bg: #ecfdf5;
+  --success-text: #047857;
+  --error-bg: #fef2f2;
+  --error-text: #b91c1c;
+  --warn-bg: #fffbeb;
+  --warn-text: #92400e;
+  --radius: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); }
+
+.app { max-width: 720px; margin: 0 auto; padding: 0 16px 48px; }
+
+.app-header {
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px 0; border-bottom: 1px solid var(--border); margin-bottom: 20px;
+}
+.app-header h1 { font-size: 20px; margin: 0; }
+.app-header nav { display: flex; gap: 8px; flex: 1; }
+.tab {
+  border: 1px solid var(--border); background: var(--card); color: var(--muted);
+  padding: 6px 14px; border-radius: 999px; cursor: pointer; font-size: 14px;
+}
+.tab.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+.user-switcher { font-size: 13px; color: var(--muted); }
+.user-switcher select { margin-left: 6px; padding: 4px 8px; border-radius: 6px; border: 1px solid var(--border); }
+
+.dashboard { display: flex; flex-direction: column; gap: 20px; }
+
+.card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 16px;
+}
+
+/* --- KudosForm --- */
+.kudos-form h2 { margin: 0 0 12px; font-size: 16px; }
+.kudos-form label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+.kudos-form .field { margin-bottom: 12px; }
+
+.user-select { position: relative; }
+.user-select input, .message-input textarea, .dialog textarea {
+  width: 100%; padding: 8px 10px; border: 1px solid var(--border);
+  border-radius: 8px; font-size: 14px; font-family: inherit; background: #fff;
+}
+.user-select input:focus, .message-input textarea:focus, .dialog textarea:focus {
+  outline: 2px solid var(--primary); outline-offset: -1px; border-color: var(--primary);
+}
+.user-select .dropdown {
+  position: absolute; z-index: 10; top: calc(100% + 4px); left: 0; right: 0;
+  background: #fff; border: 1px solid var(--border); border-radius: 8px;
+  max-height: 240px; overflow-y: auto; box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+.user-option {
+  display: flex; align-items: center; gap: 10px; width: 100%;
+  padding: 8px 10px; border: none; background: none; cursor: pointer;
+  font-size: 14px; text-align: left;
+}
+.user-option:hover, .user-option.highlighted { background: #eef2ff; }
+.user-select .selected {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; background: #fff;
+}
+.user-select .selected .clear {
+  margin-left: auto; border: none; background: none; color: var(--muted);
+  cursor: pointer; font-size: 16px; line-height: 1;
+}
+
+.message-input textarea { min-height: 84px; resize: vertical; }
+.char-counter { font-size: 12px; color: var(--muted); text-align: right; margin-top: 4px; }
+.char-counter.warn { color: var(--danger); font-weight: 600; }
+
+.submit-btn {
+  background: var(--primary); color: #fff; border: none; padding: 9px 18px;
+  border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer;
+}
+.submit-btn:hover:not(:disabled) { background: var(--primary-dark); }
+.submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.alert { padding: 10px 12px; border-radius: 8px; font-size: 13px; margin-bottom: 12px; }
+.alert.error { background: var(--error-bg); color: var(--error-text); }
+.alert.success { background: var(--success-bg); color: var(--success-text); }
+
+/* --- Feed / KudosCard --- */
+.feed h2 { font-size: 16px; margin: 0 0 12px; }
+.feed-list { display: flex; flex-direction: column; gap: 12px; }
+
+.kudos-card.hidden-card { opacity: 0.75; border-style: dashed; }
+.kudos-header { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.kudos-header .who { display: flex; align-items: center; gap: 6px; font-weight: 600; font-size: 14px; }
+.kudos-header .arrow { color: var(--muted); font-size: 13px; }
+.kudos-header time { margin-left: auto; font-size: 12px; color: var(--muted); }
+.kudos-message { margin: 10px 0 0; font-size: 14px; line-height: 1.5; white-space: pre-wrap; }
+
+.avatar {
+  width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 11px; font-weight: 700; overflow: hidden;
+}
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+.moderation-banner {
+  margin-bottom: 10px; padding: 8px 10px; border-radius: 8px;
+  background: var(--warn-bg); color: var(--warn-text); font-size: 12px;
+}
+.moderation-controls { margin-top: 10px; display: flex; gap: 8px; }
+.btn-small {
+  border: 1px solid var(--border); background: #fff; color: var(--muted);
+  padding: 4px 12px; border-radius: 6px; font-size: 12px; cursor: pointer;
+}
+.btn-small.danger { color: var(--danger); border-color: #fecaca; }
+.btn-small:hover { border-color: var(--primary); color: var(--primary); }
+
+.load-more {
+  display: block; margin: 16px auto 0; padding: 8px 20px;
+  border: 1px solid var(--border); background: #fff; border-radius: 8px;
+  cursor: pointer; font-size: 14px; color: var(--primary); font-weight: 600;
+}
+
+.skeleton { height: 76px; border-radius: var(--radius); background: linear-gradient(90deg, #eceef1 25%, #f7f8fa 50%, #eceef1 75%); background-size: 200% 100%; animation: shimmer 1.2s infinite; }
+@keyframes shimmer { to { background-position: -200% 0; } }
+
+.empty-state, .feed-error { text-align: center; color: var(--muted); padding: 32px 16px; font-size: 14px; }
+.feed-error button { margin-top: 10px; }
+
+/* --- Moderation queue --- */
+.queue-filters { display: flex; gap: 8px; margin-bottom: 14px; }
+
+/* --- Dialog --- */
+.dialog-overlay {
+  position: fixed; inset: 0; background: rgba(15, 23, 42, 0.45);
+  display: flex; align-items: center; justify-content: center; z-index: 100;
+}
+.dialog {
+  background: #fff; border-radius: var(--radius); padding: 20px;
+  width: min(440px, 90vw); box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+}
+.dialog h3 { margin: 0 0 10px; font-size: 15px; }
+.dialog .dialog-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 12px; }
